@@ -1,0 +1,38 @@
+<span></span>
+
+<div *ngIf="loading">
+  <mat-spinner diameter="50" class="spinner"></mat-spinner>
+</div>
+<div *ngIf="!loading">
+  <mat-card class="example-card ">
+    <mat-card-header *ngIf="!loading" >
+      <mat-card-title>Login</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <form class="example-form" >
+        <table class="example-full-width" cellspacing="0">
+          <tr>
+            <td>
+              <mat-form-field class="example-full-width">
+              <!-- <input matInput placeholder="Username"  name="username" required [(ngModel)]="nombre"> -->
+               <input matInput placeholder="Username"  name="username" required value="demo">
+              </mat-form-field>
+            </td>
+          </tr>
+          <tr>
+          <td><mat-form-field class="example-full-width">
+            <!-- <input matInput placeholder="Password"type="password" name="password" required [(ngModel)]="password"> -->
+                <input matInput placeholder="Password"type="password" name="password" required value="demo">
+          </mat-form-field></td>
+        </tr></table>
+      </form>
+      <!-- <mat-spinner [style.display]="showSpinner ? 'block' : 'none'"></mat-spinner> -->
+      <mat-card-actions >
+        <!-- <button mat-raised-button color="primary" (click)="ingresar()">Login</button> -->
+        <button mat-raised-button color="primary" (click)="ingresarFake()">Login</button>
+      </mat-card-actions>
+    </mat-card-content>
+
+
+  </mat-card>
+</div>

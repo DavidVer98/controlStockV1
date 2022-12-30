@@ -1,0 +1,79 @@
+<div>
+  <div>
+    <div>
+      <h2 id="exampleModalLabel">Buscar Cliente</h2>
+    </div>
+    <div>
+      <form>
+        <div class="container">
+          <div class="row">
+            <div class="col-sm">
+              <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Nombre</mat-label>
+                <input
+                  matInput
+                  #message1
+                  maxlength="256"
+                  placeholder="Nombre"
+                  name="nombre"
+                  [(ngModel)]="nombre"
+                />
+              </mat-form-field>
+            </div>
+            <div class="col-sm">
+              <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Apellido</mat-label>
+                <input
+                  matInput
+                  #message2
+                  maxlength="256"
+                  placeholder="Apellido"
+                  name="apellido"
+                  [(ngModel)]="apellido"
+                />
+              </mat-form-field>
+            </div>
+          </div>
+          <button mat-raised-button color="primary" (click)="buscar()">
+            Buscar
+          </button>
+        </div>
+
+        <div></div>
+      </form>
+
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Nombre</th>
+            <th scope="col">Apellido</th>
+            <th scope="col">Email</th>
+            <th scope="col">Ruc</th>
+            <th scope="col">Cedula</th>
+            <th scope="col">Fecha Nacimiento</th>
+            <th scope="col">Accion</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let group of data">
+            <td>{{ group.nombre }}</td>
+            <td>{{ group.apellido }}</td>
+            <td>{{ group.email }}</td>
+            <td>{{ group.telefono }}</td>
+            <td>{{ group.ruc }}</td>
+            <td>{{ group.cedula }}</td>
+            <td>{{ group.fechaNacimiento }}</td>
+            <td>
+              <button
+                data-bs-dismiss="modal"
+                (click)="seleccionarCliente(group)"
+              >
+                Seleccionar
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

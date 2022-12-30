@@ -1,0 +1,147 @@
+<div *ngIf="data.tipo == 'create'">
+    <form class="example-form">
+      <h1>Crear Paciente</h1>
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Nombre</mat-label>
+        <input
+          [(ngModel)]="paciente_data.nombre"
+          name="datos de las personas"
+          matInput
+          maxlength="256"
+          placeholder="Ariel"
+        />
+      </mat-form-field>
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Apellido</mat-label>
+        <input
+        [(ngModel)]="paciente_data.apellido"
+        name="datos de las personas"
+        matInput
+        maxlength="256"
+        placeholder="Cardozo"
+      />
+      </mat-form-field>
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>email</mat-label>
+        <input
+        [(ngModel)]="paciente_data.email"
+        name="datos de las personas"
+        matInput
+        maxlength="256"
+        placeholder="example@gmail.com"
+      />
+      </mat-form-field>
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>telefono</mat-label>
+        <input
+        [(ngModel)]="paciente_data.telefono"
+        name="datos de las personas"
+        matInput
+        maxlength="256"
+        placeholder="xx"
+      />
+      </mat-form-field>
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>ruc</mat-label>
+        <input
+        [(ngModel)]="paciente_data.ruc"
+        name="datos de las personas"
+        matInput
+        maxlength="256"
+        placeholder="123"
+      />
+      </mat-form-field>
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>cedula</mat-label>
+        <input
+        [(ngModel)]="paciente_data.cedula"
+        name="datos de las personas"
+        matInput
+        maxlength="256"
+        placeholder="123-3"
+      />
+      </mat-form-field>
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>tipoPersona</mat-label>
+        <input
+        [(ngModel)]="paciente_data.tipoPersona"
+        name="datos de las personas"
+        matInput
+        maxlength="256"
+        placeholder="FISICA"
+      />
+      </mat-form-field>
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>fechaNacimiento</mat-label>
+        <input
+        [(ngModel)]="paciente_data.fechaNacimiento"
+        name="datos de las personas"
+        matInput
+        maxlength="256"
+        placeholder="1990-10-30"
+      />
+      </mat-form-field>
+      <button
+        mat-raised-button
+        color="primary"
+        (click)="crearPaciente()"
+        mat-dialog-close
+      >
+        Guardar
+      </button>
+    </form>
+  </div>
+  <div *ngIf="data.tipo == 'delete'">
+    <h1 mat-dialog-title>Eliminar Categoria</h1>
+    <div mat-dialog-content>
+      ¿Estas seguro?
+    </div>
+    <div mat-dialog-actions>
+      <button mat-stroked-button color="primary" (click)="eliminarPersona()" mat-dialog-close>Aceptar</button>
+      <button mat-button mat-dialog-close cdkFocusInitial mat-raised-button color="warn">Cancelar</button>
+    </div>
+  
+  </div>
+
+  <div *ngIf="data.tipo == 'edit'">
+    <form class="example-form">
+      <h1>Editar Persona</h1>
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>nombre</mat-label>
+        <input [(ngModel)]="paciente.nombre" name="nombre" matInput maxlength="256" placeholder="Farmacos" />
+      </mat-form-field>
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>apellido</mat-label>
+        <input [(ngModel)]="paciente.apellido" name="apellido" matInput maxlength="256" placeholder="Farmacos" />
+      </mat-form-field>
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>email</mat-label>
+        <input [(ngModel)]="paciente.email" name="email" matInput maxlength="256" placeholder="Farmacos" />
+      </mat-form-field>
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>telefono</mat-label>
+        <input [(ngModel)]="paciente.telefono" name="telefono" matInput maxlength="256" placeholder="Farmacos" />
+      </mat-form-field>
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>ruc</mat-label>
+        <input [(ngModel)]="paciente.ruc" name="ruc" matInput maxlength="256" placeholder="Farmacos" />
+      </mat-form-field>
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>cedula</mat-label>
+        <input [(ngModel)]="paciente.cedula" name="cedula" matInput maxlength="256" placeholder="Farmacos" />
+      </mat-form-field>
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>TipoPersona</mat-label>
+        <input [(ngModel)]="paciente.tipoPersona" name="tipoPersona" matInput maxlength="256" placeholder="Farmacos" />
+      </mat-form-field>
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Fecha de Nacimiento</mat-label>
+        <input [(ngModel)]="paciente.fechaNacimiento" name="fechadenacimiento" matInput maxlength="256" placeholder="Farmacos" />
+      </mat-form-field>
+      <button mat-raised-button color="primary" (click)="editarPersona()" mat-dialog-close>
+        Guardar
+      </button>
+    </form>
+  </div>
+  
+  

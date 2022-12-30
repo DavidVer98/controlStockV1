@@ -1,0 +1,60 @@
+<div *ngIf="data.tipo == 'delete'">
+  <h1 mat-dialog-title>Eliminar</h1>
+  <div mat-dialog-content>
+    ¿Estas seguro?
+  </div>
+  <div mat-dialog-actions>
+    <button mat-stroked-button color="primary" (click)="eliminar()" mat-dialog-close>Aceptar</button>
+    <button mat-button mat-dialog-close cdkFocusInitial mat-raised-button color="warn">Cancelar</button>
+  </div>
+
+</div>
+
+
+<div *ngIf="data.tipo == 'create'">
+  <div class="container">
+    <!--Ficha Clinica-->
+    <div class="row ">
+      <mat-form-field appearance="fill">
+        <mat-label>Ficha Clinica</mat-label>
+        <mat-select [(ngModel)]="cabecera.idFichaClinica" name="id">
+          <mat-option *ngFor="let option of fichasClinicas"
+                      [value]="option.idFichaClinica">
+            {{ option.idFichaClinica }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <!--Ficha Clinica-->
+    <div class="row ">
+      <mat-form-field appearance="fill">
+        <mat-label>Producto</mat-label>
+        <mat-select [(ngModel)]="detalles.idPresentacionProducto.idPresentacionProducto">
+          <mat-option *ngFor="let option of presentacionProducto"
+                      [value]="option.idPresentacionProducto">
+            {{ option.nombre }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <!--Cantidad-->
+    <div class="row ">
+      <mat-form-field appearance="fill">
+        <mat-label>Cantidad</mat-label>
+        <input matInput type="number" [(ngModel)]="detalles.cantidad">
+      </mat-form-field>
+    </div>
+    <!--Observacion-->
+    <div class="row ">
+      <mat-form-field appearance="fill">
+        <mat-label>Observaciones</mat-label>
+        <input matInput type="text" [(ngModel)]="cabecera.observacion" name="observaciones">
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div class="row ">
+    <button mat-flat-button color="primary" (click)="guardar()">Guardar</button>
+  </div>
+
+</div>

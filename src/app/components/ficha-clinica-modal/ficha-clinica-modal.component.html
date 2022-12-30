@@ -1,0 +1,155 @@
+
+<div *ngIf="data.tipo == 'create'">
+    <form class="example-form">
+      <h1>Crear Ficha Clinica</h1>
+      <ul style="list-style: none;">
+        <li>
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Motivo de la consulta</mat-label>
+            <input [(ngModel)]="fichaclinica.motivoConsulta" name="motivoConsulta" matInput maxlength="256"
+              placeholder="Escriba el motivo de la consulta" />
+          </mat-form-field>
+        </li>
+        <li>
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Diagnostico</mat-label>
+            <input [(ngModel)]="fichaclinica.diagnostico" name="diagnostico" matInput maxlength="256"
+              placeholder="Escriba el diagnostico" />
+          </mat-form-field>
+        </li>
+        <li>
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Observacion</mat-label>
+            <input [(ngModel)]="fichaclinica.observacion" name="observacion" matInput maxlength="256"
+              placeholder="Escriba la observacion" />
+          </mat-form-field>
+        </li>
+        <li>
+          <mat-form-field appearance="fill">
+            <mat-label>Seleccione una SubCategoria</mat-label>
+            <mat-select disableRipple (selectionChange)="onChange1($event.value)">
+              <mat-option *ngFor="let test of subCategoria"  [value]="test.idTipoProducto">{{test.descripcion}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </li>
+        <li>
+          <mat-form-field appearance="fill">
+            <mat-label>Seleccione un HorarioExcepcion</mat-label>
+            <mat-select disableRipple (selectionChange)="onChange2($event.value)">
+              <mat-option *ngFor="let test of personaFisioterapeuta"  [value]="test.idPersona">{{test.nombre}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </li>
+        <li>
+          <mat-form-field appearance="fill">
+            <mat-label>Seleccione un Cliente</mat-label>
+            <mat-select disableRipple (selectionChange)="onChange3($event.value)">
+              <mat-option *ngFor="let test of personaCliente"  [value]="test.idPersona">{{test.nombre}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </li>
+        <li>
+          <button mat-raised-button color="primary" (click)="createFichaClinica()" mat-dialog-close>
+            Guardar
+          </button>
+        </li>
+      </ul>
+    </form>
+  </div>
+<div *ngIf="data.tipo == 'edit'">
+  <form class="example-form">
+    <h1>Ver/Editar Ficha Clinica</h1>
+    <ul style="list-style: none;">
+      <li>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Motivo de la consulta</mat-label>
+          <input [(ngModel)]="fichaclinica.motivoConsulta" name="motivoConsulta" matInput maxlength="256"
+            placeholder="Farmacos" [disabled]="true"/>
+        </mat-form-field>
+      </li>
+      <li>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Diagnostico</mat-label>
+          <input [(ngModel)]="fichaclinica.diagnostico" name="diagnostico" matInput maxlength="256"
+            placeholder="Farmacos" [disabled]="true"/>
+        </mat-form-field>
+      </li>
+      <li>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Observacion</mat-label>
+          <input [(ngModel)]="fichaclinica.observacion" name="observacion" matInput maxlength="256"
+            placeholder="Farmacos" />
+        </mat-form-field>
+      </li>
+      <li>
+        <button mat-raised-button color="primary" (click)="editarFichaClinica()" mat-dialog-close>
+          Guardar
+        </button>
+      </li> 
+        
+    </ul>
+
+    
+
+  </form>
+  <div class="container">
+    <h3>Servicios creados a partir de esta ficha</h3>
+      <table mat-table [dataSource]="dataSource4" class="container">
+        <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+  
+        <!-- Position Column -->
+        <ng-container matColumnDef="idServicio">
+          <th mat-header-cell *matHeaderCellDef>Id</th>
+          <td mat-cell *matCellDef="let element">{{ element.idServicio }}</td>
+        </ng-container>
+
+        <!-- Position Column -->
+        <ng-container matColumnDef="observacion">
+          <th mat-header-cell *matHeaderCellDef>observacion</th>
+          <td mat-cell *matCellDef="let element">{{ element.observacion }}</td>
+        </ng-container>
+        <ng-container matColumnDef="acciones">
+          <th mat-header-cell *matHeaderCellDef></th>
+          <td
+            mat-cell
+            *matCellDef="let element; let id = index"
+            style="text-align: right"
+          >
+            <a
+              style="color: #1f516f"
+              matTooltip="Ver/Editar"
+              aria-label="Button that displays a tooltip when focused or hovered over"
+              
+            >
+              <mat-icon> note_add </mat-icon></a
+            >
+          </td>
+        </ng-container>
+
+
+
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+      <mat-paginator
+        [pageSizeOptions]="[5, 10, 25, 100]"
+        aria-label="Select page of users"
+      ></mat-paginator>
+  </div>
+</div>
+
+
+<div *ngIf="data.tipo == 'delete'">
+  <h1 mat-dialog-title>Eliminar Ficha Clinica</h1>
+  <div mat-dialog-content>
+    ¿Estas seguro?
+  </div>
+  <div mat-dialog-actions>
+    <button mat-stroked-button color="primary" (click)="eliminarFichaClinica()" mat-dialog-close>Aceptar</button>
+    <button mat-button mat-dialog-close cdkFocusInitial mat-raised-button color="warn">Cancelar</button>
+  </div>
+
+</div>
+

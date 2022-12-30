@@ -1,0 +1,22 @@
+table {
+  width: 100%;
+}
+.mat-form-field {
+  font-size: 16px;
+  width: 100%;
+}
+
+#table-container {
+  height: 600px;
+  overflow: auto;
+}
+
+.table-row {
+  height: 30px !important;
+}
+
+.table-container {
+  margin-top: 10px;
+  max-height: 800px;
+  overflow: auto;
+}

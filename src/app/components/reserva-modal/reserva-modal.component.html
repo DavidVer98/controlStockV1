@@ -1,0 +1,104 @@
+<div *ngIf="data.tipo == 'create'">
+  <form class="example-form">
+    <h1>Crear Reserva</h1>
+    <ul style="list-style: none;">
+      <li>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Fecha de consulta</mat-label>
+          <input [(ngModel)]="fechaCadena" name="fechaCadena" matInput maxlength="256"
+            placeholder="AAAAMMDD" />
+        </mat-form-field>
+      </li>
+      <li>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Hora inicio</mat-label>
+          <input [(ngModel)]="horaInicioCadena" name="horaInicioCadena" matInput maxlength="256" 
+            placeholder="1545" />
+        </mat-form-field>
+      </li>
+      <li>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Hora Fin</mat-label>
+          <input [(ngModel)]="horaFinCadena" name="observacion" matInput maxlength="256"
+            placeholder="1545" />
+        </mat-form-field>
+      </li>
+      <li>
+        <mat-form-field appearance="fill">
+          <mat-label>Seleccione un Fisioterapeuta</mat-label>
+          <mat-select disableRipple (selectionChange)="onChange2($event.value)">
+            <mat-option *ngFor="let test of personaFisioterapeuta"  [value]="test.idPersona">{{test.nombre}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </li>
+      <li>
+        <mat-form-field appearance="fill">
+          <mat-label>Seleccione un Cliente</mat-label>
+          <mat-select disableRipple (selectionChange)="onChange3($event.value)">
+            <mat-option *ngFor="let test of personaCliente"  [value]="test.idPersona">{{test.nombre}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </li>
+      <li>
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Observacion</mat-label>
+          <input [(ngModel)]="observacion" name="observacion" matInput maxlength="256"
+            placeholder="Escriba la observacion" />
+        </mat-form-field>
+      </li>
+      <li>
+        <button mat-raised-button color="primary" (click)="crearReserva()" mat-dialog-close>
+          Guardar
+        </button>
+      </li>
+    </ul>
+  </form>
+</div>
+
+<div *ngIf="data.tipo == 'edit'">
+  <form class="example-form">
+    <h1>Editar Reserva</h1>
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Observacion</mat-label>
+      <input
+        [(ngModel)]="reserva"
+        name="observacion"
+        matInput
+        maxlength="256"
+        placeholder="Observacion"
+      />
+    </mat-form-field>
+    <button
+      mat-raised-button
+      color="primary"
+      (click)="editarReserva()"
+      mat-dialog-close
+    >
+      Guardar
+    </button>
+  </form>
+</div>
+
+<div *ngIf="data.tipo == 'delete'">
+  <h1 mat-dialog-title>Cancelar Reserva</h1>
+  <div mat-dialog-content>¿Estas seguro?</div>
+  <div mat-dialog-actions>
+    <button
+      mat-stroked-button
+      color="primary"
+      (click)="cancelarReserva()"
+      mat-dialog-close
+    >
+      Aceptar
+    </button>
+    <button
+      mat-button
+      mat-dialog-close
+      cdkFocusInitial
+      mat-raised-button
+      color="warn"
+    >
+      Cancelar
+    </button>
+  </div>
+</div>

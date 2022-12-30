@@ -1,0 +1,73 @@
+<div *ngIf="data.tipo == 'create'">
+    <form class="example-form">
+      <h1>Crear Categoria</h1>
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Descripcion</mat-label>
+        <input
+          [(ngModel)]="descripcionSubCategoria"
+          name="descripcion"
+          matInput
+          maxlength="256"
+          placeholder="Farmacos"
+        />
+        
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Select an option</mat-label>
+        <mat-select disableRipple (selectionChange)="onChange($event.value)">
+          <mat-option *ngFor="let test of categoria"  [value]="test.idCategoria">{{test.descripcion}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+      
+      <button
+        mat-raised-button
+        color="primary"
+        (click)="crearSubCategoria()"
+        mat-dialog-close
+      >
+        Guardar
+      </button>
+    </form>
+  </div>
+  <div *ngIf="data.tipo == 'edit'">
+    <form class="example-form">
+      <h1>Editar Categoria</h1>
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Descripcion</mat-label>
+        <input
+          [(ngModel)]="subCategoria"
+          name="descripcion"
+          matInput
+          maxlength="256"
+          placeholder="Farmacos"
+        />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Select an option</mat-label>
+        <mat-select disableRipple (selectionChange)="onChange($event.value)" [(value)]="seleccionado">
+          <mat-option *ngFor="let test of categoria"  [value]="test.idCategoria">{{test.descripcion}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <button
+        mat-raised-button
+        color="primary"
+        (click)="editarSubCategoria()"
+        mat-dialog-close
+      >
+        Guardar
+      </button>
+    </form>
+  </div>
+  <div *ngIf="data.tipo == 'delete'">
+    <h1 mat-dialog-title>Eliminar Categoria</h1>
+  <div mat-dialog-content>
+    ¿Estas seguro?
+  </div>
+  <div mat-dialog-actions>
+    <button mat-stroked-button color="primary" (click)="eliminarSubCategoria()" mat-dialog-close>Aceptar</button>
+    <button mat-button mat-dialog-close cdkFocusInitial  mat-raised-button color="warn">Cancelar</button>
+  </div>
+  
+  </div>

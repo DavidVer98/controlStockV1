@@ -1,0 +1,88 @@
+<div *ngIf="data.tipo == 'create'">
+  <form class="example-form">
+    <h1>Añadir un nuevo registro</h1>
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Codigo</mat-label>
+      <input [(ngModel)]="codigo" name="codigo" matInput maxlength="256" placeholder="500" />
+     
+    </mat-form-field>
+    
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Nombre</mat-label>
+      <input [(ngModel)]="nombre" name="nombre" matInput maxlength="256" placeholder="Tratamiento de rodilla" />
+
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Descripcion</mat-label>
+      <input [(ngModel)]="descripcion" name="descripcion" matInput maxlength="256" placeholder="Tratamiento de rodilla" />
+
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Precio Venta</mat-label>
+      <input [(ngModel)]="precioventa" name="precioventa" matInput maxlength="256" placeholder="30.000" />
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Select an option</mat-label>
+      <mat-select disableRipple (selectionChange)="onChange($event.value)">
+        <mat-option *ngFor="let test of idProductoLista"  [value]="test">{{test.idProducto}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" (click)="crearServicioAdmin()" mat-dialog-close>
+      Guardar
+    </button>
+  </form>
+</div>
+<!--  -------------------------------------- -->
+
+<div *ngIf="data.tipo == 'edit'">
+  <form class="example-form">
+    <h1>Editar Registro</h1>
+    
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label> Nombre </mat-label>
+      <input [(ngModel)]="nombre" name="nombre" matInput maxlength="256" placeholder="Farmacos"/>
+    </mat-form-field>
+
+    
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label> descripcion </mat-label>
+      <input [(ngModel)]="descripcion" name="descripcion" matInput maxlength="256" placeholder="Farmacos"/>
+    </mat-form-field>
+
+
+
+    <mat-form-field appearance="fill">
+      <mat-label>Select an option</mat-label>
+      <mat-select disableRipple (selectionChange)="onChange($event.value)" [(value)]="seleccionado">
+        <mat-option *ngFor="let test of idProductoLista"  [value]="test">{{test.idProducto}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <button
+      mat-raised-button
+      color="primary"
+      (click)="editarServiciosAdmin()"
+      mat-dialog-close
+    >
+      Guardar
+    </button>
+  </form>
+</div>
+
+<!-- ---------------------------------------------------------------------- -->
+
+<div *ngIf="data.tipo == 'delete'">
+  <h1 mat-dialog-title>Eliminar Categoria</h1>
+<div mat-dialog-content>
+  ¿Estas seguro?
+</div>
+<div mat-dialog-actions>
+  <button mat-stroked-button color="primary" (click)="eliminarServiciosAdmin()" mat-dialog-close>Aceptar</button>
+  <button mat-button mat-dialog-close cdkFocusInitial  mat-raised-button color="warn">Cancelar</button>
+</div>
+
+

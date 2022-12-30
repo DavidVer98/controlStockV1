@@ -1,0 +1,134 @@
+<div class="container">
+  <h1>Sub Categoria</h1>
+  <div class="row">
+
+    <div class="col-2">
+      <mat-form-field appearance="fill">
+        <mat-label>Descripcion</mat-label>
+        <input matInput type="text" placeholder="cat" [(ngModel)]="query.descripcion">
+      </mat-form-field>
+    </div>
+
+    <div class="col-2">
+      <mat-form-field appearance="fill">
+        <mat-label>Categoria</mat-label>
+        <mat-select [(ngModel)]="query.idCategoria">
+          <mat-option *ngFor="let option of categorias"
+                      [value]="option.idCategoria">
+            {{ option.descripcion }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="col-2 my-auto">
+      <button mat-flat-button color="primary" (click)="search()">Buscar</button>
+    </div>
+
+  </div>
+
+
+</div>
+
+
+
+<div class="container">
+    <!-- <mat-toolbar>
+      <span>Categoria</span>
+      <button mat-raised-button color="primary" (click)="openPopup()">Primary</button>
+
+    </mat-toolbar> -->
+    <mat-form-field appearance="standard">
+      <mat-label>Filter</mat-label>
+      <input
+        matInput
+        (keyup)="applyFilter($event)"
+        placeholder="Ejemplo: Trauma"
+        #input
+      />
+    </mat-form-field>
+
+    <div class="mat-elevation-z1">
+      <table mat-table [dataSource]="dataSource" class="container">
+        <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+
+        <!-- Position Column -->
+        <ng-container matColumnDef="IdSubCategoria">
+          <th mat-header-cell *matHeaderCellDef>Id</th>
+          <td mat-cell *matCellDef="let element">{{ element.idTipoProducto }}</td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="Descripcion">
+          <th mat-header-cell *matHeaderCellDef>Sub-Categoria</th>
+          <td mat-cell *matCellDef="let element">{{ element.descripcion }}</td>
+        </ng-container>
+
+         <!-- Name Column -->
+         <ng-container matColumnDef="DescripcionCat">
+          <th mat-header-cell *matHeaderCellDef>Categoria</th>
+          <td mat-cell *matCellDef="let element">{{ element.idCategoria.descripcion }}</td>
+        </ng-container>
+
+        <!-- Weight Column -->
+        <ng-container matColumnDef="flag">
+          <th mat-header-cell *matHeaderCellDef>Flag</th>
+          <td mat-cell *matCellDef="let element">{{ element.flagVisible }}</td>
+        </ng-container>
+
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="posicion">
+          <th mat-header-cell *matHeaderCellDef>Posicion</th>
+          <td mat-cell *matCellDef="let element">{{ element.posicion }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="acciones">
+            <th mat-header-cell *matHeaderCellDef></th>
+            <td
+              mat-cell
+              *matCellDef="let element; let id = index"
+              style="text-align: right"
+            >
+            <a
+            style="color: #1f516f"
+            matTooltip="Editar"
+            aria-label="Button that displays a tooltip when focused or hovered over"
+            (click)="editarSubCategoria(element.idTipoProducto,element.idCategoria)"
+          >
+            <mat-icon> edit </mat-icon></a
+          >
+          <a
+            style="color: #e43c3c"
+            matTooltip="Eliminar"
+            aria-label="Button that displays a tooltip when focused or hovered over"
+            (click)="eliminarSubCategoria(element.idTipoProducto)"
+          >
+            <mat-icon> delete </mat-icon></a
+          >
+            </td>
+          </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+      <mat-paginator
+        [pageSizeOptions]="[5, 10, 25, 100]"
+        aria-label="Select page of users"
+        style="margin-bottom: 50px"
+      ></mat-paginator>
+    </div>
+  </div>
+  <div
+  class="example-button-container"
+  style="position: fixed; right: 5em; bottom: 4em"
+>
+  <button
+    mat-fab
+    color="warn"
+    aria-label="Example icon button with a home icon"
+    (click)="crearSubCategoria()"
+  >
+    <mat-icon>add</mat-icon>
+  </button>
+</div>

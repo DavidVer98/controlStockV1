@@ -1,0 +1,97 @@
+<mat-toolbar color="primary" style="position: sticky;">
+  <mat-toolbar-row>
+    <button
+      mat-icon-button
+      class="example-icon"
+      aria-label="Example icon-button with menu icon"
+      (click)="opened = !opened"
+    >
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span style="padding: 1em">Nutri Natalia</span>
+    <span class="example-spacer"></span>
+    <!-- <button mat-button routerLink="/categoria">Categorias</button>
+    <button mat-button>Test 1</button>
+    <button mat-button>Test 1</button>
+    <span class="example-spacer"></span> -->
+    <button
+      mat-icon-button
+      class="example-icon"
+      aria-label="Example icon-button with menu icon"
+      routerLink="/"
+    >
+      <mat-icon> logout</mat-icon>
+    </button>
+  </mat-toolbar-row>
+</mat-toolbar>
+<mat-sidenav-container>
+  <mat-sidenav mat-button [(opened)]="opened" mode="side">
+    <mat-nav-list style="margin-top: 5px">
+
+      <mat-list-item mat-button routerLink="/serviciosAdmin">
+        <mat-icon style="color: #898989">medical_services</mat-icon>
+        <span mat-button class="button-text">Admin. de Servicios</span>
+        <mat-divider></mat-divider>
+      </mat-list-item>
+      <mat-list-item mat-button routerLink="/servicios">
+        <mat-icon style="color: #898989">medical_services</mat-icon>
+        <span mat-button class="button-text">Servicios</span>
+        <mat-divider></mat-divider>
+      </mat-list-item>
+    </mat-nav-list>
+    <mat-nav-list style="margin-top: 5px">
+      <mat-list-item mat-button routerLink="/categoria">
+        <mat-icon style="color: #898989">chrome_reader_mode</mat-icon>
+        <span mat-button class="button-text">Categoria</span>
+        <mat-divider></mat-divider>
+      </mat-list-item>
+    </mat-nav-list>
+    <mat-nav-list style="margin-top: 5px">
+      <mat-list-item mat-button routerLink="/subCategoria">
+        <mat-icon style="color: #898989">collections_bookmark</mat-icon>
+        <span mat-button class="button-text">Sub-Categoria</span>
+        <mat-divider></mat-divider>
+      </mat-list-item>
+    </mat-nav-list>
+    <mat-nav-list style="margin-top: 5px">
+      <mat-list-item mat-button routerLink="/reserva">
+        <mat-icon style="color: #898989">edit_calendar</mat-icon>
+        <span mat-button class="button-text">Reserva</span>
+        <mat-divider></mat-divider>
+      </mat-list-item>
+    </mat-nav-list>
+    <mat-nav-list style="margin-top: 5px">
+      <mat-list-item mat-button routerLink="/fichaclinica">
+        <mat-icon style="color: #898989">perm_contact_calendar</mat-icon>
+        <span mat-button class="button-text">Ficha Clinica</span>
+        <mat-divider></mat-divider>
+      </mat-list-item>
+    </mat-nav-list>
+    <mat-nav-list style="margin-top: 5px">
+      <mat-list-item mat-button routerLink="/paciente">
+        <mat-icon style="color: #898989">manage_accounts</mat-icon>
+        <span mat-button class="button-text">Administración de Paciente</span>
+        <mat-divider></mat-divider>
+      </mat-list-item>
+    </mat-nav-list>
+    <mat-nav-list style="margin-top: 5px">
+      <mat-list-item mat-button routerLink="/horarioExcepcion">
+        <mat-icon style="color: #898989">manage_accounts</mat-icon>
+        <span mat-button class="button-text">Horario Excepcion</span>
+        <mat-divider></mat-divider>
+      </mat-list-item>
+    </mat-nav-list>
+    <mat-nav-list style="margin-top: 5px">
+      <mat-list-item mat-button routerLink="/reportes">
+        <mat-icon style="color: #898989">file_open        </mat-icon>
+        <span mat-button class="button-text">Reportes</span>
+        <mat-divider></mat-divider>
+      </mat-list-item>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div style="padding: 2em">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

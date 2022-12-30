@@ -1,0 +1,153 @@
+<div class="container">
+  <!-- <mat-toolbar>
+    <span>Categoria</span>
+    <button mat-raised-button color="primary" (click)="openPopup()">Primary</button>
+
+  </mat-toolbar> -->
+  <h1>Servicios</h1>
+
+<!-- ---------------------- -->
+<div class="container">
+  <div class="row">
+    <label for="nombre">Filtros</label>
+    <div class="col-sm">
+      <mat-form-field appearance="fill">
+        <mat-label>Nombre</mat-label>
+        <input
+          matInput
+          placeholder="nombre"
+          type="text"
+          id="nombre"
+          name="nombre"
+
+          [(ngModel)]="filtros.nombre"
+        />
+      </mat-form-field>
+    </div>
+    <div class="col-sm">
+      <mat-form-field appearance="fill">
+        <mat-label>Subcategoria</mat-label>
+        <input
+          matInput
+          placeholder="subcategoria"
+          type="text"
+          id="subcategoria"
+          name="subcategoria"
+
+          [(ngModel)]="filtros.subcategoria"
+        />
+      </mat-form-field>
+    </div>
+    
+
+    <div class="w-100"></div>
+    
+
+    <div class="col-2"  style="margin-left: 27em;">
+        <button mat-raised-button color="primary" (click)="buscar()">
+          Buscar
+        </button>
+      </div>
+
+  </div>
+</div>
+</div>
+<div>
+<!-- ----------------- -->
+
+  <mat-form-field appearance="standard">
+    <mat-label>Filter</mat-label>
+    <input
+      matInput
+      (keyup)="applyFilter($event)"
+      placeholder="Ejemplo: Trauma"
+      #input
+    />
+  </mat-form-field>
+  <div class="mat-elevation-z1">
+    <table mat-table [dataSource]="dataSource" class="container">
+      <!--- Note that these columns can be defined in any order.
+        The actual rendered columns are set as a property on the row definition" -->
+
+      <!-- Position Column -->
+      <ng-container matColumnDef="IdPresentacionProducto">
+        <th mat-header-cell *matHeaderCellDef>Id</th>
+        <td mat-cell *matCellDef="let element">{{ element.idPresentacionProducto }}</td>
+      </ng-container>
+
+        <!-- Weight Column -->
+        <ng-container matColumnDef="Nombre">
+            <th mat-header-cell *matHeaderCellDef>Nombre</th>
+            <td mat-cell *matCellDef="let element"> {{ element.nombre}}</td>
+        </ng-container>
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="Descripcion">
+        <th mat-header-cell *matHeaderCellDef>Descripcion</th>
+        <td mat-cell *matCellDef="let element"> {{ element.descripcion }} </td>
+      </ng-container>
+
+      
+
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="IdProducto">
+        <th mat-header-cell *matHeaderCellDef>Sub-Categoria</th>
+        <td mat-cell *matCellDef="let element"> {{element.idProducto.idTipoProducto.descripcion}} </td>
+      </ng-container>
+
+      <!-- Symbol Column -->
+
+
+      <ng-container matColumnDef="acciones">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td
+          mat-cell
+          *matCellDef="let element; let id = index"
+          style="text-align: right"
+        >
+        <!-- test:ServiciosAdmin, nombre:string, descripcion:string, idproductoMod:ProductoAdminSistema -->
+          <a
+            style="color: #1f516f"
+            matTooltip="Editar"
+            aria-label="Button that displays a tooltip when focused or hovered over"
+            
+            (click)="editarServiciosAdmin(element,element.nombre,element.descripcion,element.idProducto)"
+          >
+            <mat-icon> edit </mat-icon></a
+          >
+          <a
+            style="color: #e43c3c"
+            matTooltip="Eliminar"
+            aria-label="Button that displays a tooltip when focused or hovered over"
+            (click)="eliminarServicioAdmin(element)"
+          >
+            <mat-icon> delete </mat-icon></a
+          >
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+    <mat-paginator
+      [pageSizeOptions]="[5, 10, 25, 100]"
+      aria-label="Select page of users"
+      style="margin-bottom: 50px"
+    ></mat-paginator>
+  </div>
+</div>
+
+<div
+  class="example-button-container"
+  style="position: fixed; right: 5em; bottom: 4em"
+>
+  <button
+    mat-fab
+    color="warn"
+    aria-label="Example icon button with a home icon"
+    (click)="crearServicioAdmin()"
+  >
+    <mat-icon>add</mat-icon>
+  </button>
+</div>
+

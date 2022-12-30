@@ -1,0 +1,56 @@
+<div *ngIf="data.tipo == 'create'">
+  <div class="container">
+
+    <div class="row ">
+      <mat-form-field appearance="fill">
+        <mat-label>Fecha Cadena</mat-label>
+        <input matInput type="text" [(ngModel)]="horario.fechaCadena">
+      </mat-form-field>
+    </div>
+
+    <div class="row ">
+      <mat-form-field appearance="fill">
+        <mat-label>Hora Apertura Cadena</mat-label>
+        <input matInput type="text" [(ngModel)]="horario.horaAperturaCadena">
+      </mat-form-field>
+    </div>
+
+    <div class="row ">
+      <mat-form-field appearance="fill">
+        <mat-label>Hora Cierre Cadena</mat-label>
+        <input matInput type="text" [(ngModel)]="horario.horaCierreCadena">
+      </mat-form-field>
+    </div>
+
+    <div class="row ">
+      <mat-form-field appearance="fill">
+        <mat-label>Es Habilitar</mat-label>
+        <input matInput type="text" [(ngModel)]="horario.flagEsHabilitar" placeholder="S">
+      </mat-form-field>
+    </div>
+
+    <div class="col-2">
+      <mat-form-field appearance="fill">
+        <mat-label>Empleado</mat-label>
+        <mat-select [(ngModel)]="horario.idEmpleado">
+          <mat-option *ngFor="let option of empleados"
+                      [value]="option.idPersona">
+            {{ option.nombre }} {{ option.apellido }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="row ">
+      <mat-form-field appearance="fill">
+        <mat-label>Intervalo Minutos</mat-label>
+        <input matInput type="number" [(ngModel)]="horario.intervaloMinutos">
+      </mat-form-field>
+    </div>
+
+  <div class="row ">
+    <button mat-flat-button color="primary" (click)="guardar()">Guardar</button>
+  </div>
+  </div>
+
+</div>
