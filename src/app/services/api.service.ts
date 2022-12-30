@@ -29,7 +29,7 @@ import {HorarioExcepcion} from "../models/horarioExcepcion";
 })
 export class ApiService {
   constructor(private http: HttpClient) {}
-  private urlBase = 'https://equipoyosh.com/stock-nutrinatalia/';
+  private urlBase = 'stock-nutrinatalia/';
   getAllCategoria(): Observable<Listadatos<Categoria>> {
     // add no corse header
 

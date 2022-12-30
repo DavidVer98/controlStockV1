@@ -1,0 +1,12 @@
+{
+  "/stock-nutrinatalia/*":{
+    "target":"https://equipoyosh.com",
+    "secure":false,
+    "logLevel":"debug",
+    "changeOrigin":true,
+    "pathRewrite":{
+      "^/stock-nutrinatalia":"https://equipoyosh.com/stock-nutrinatalia"
+    }
+  }
+
+}
